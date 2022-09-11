@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Requests\Admin;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class BulkUpdateAppSettingsAPIRequest extends FormRequest
+{
+    /**
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'data.*.key' => ['nullable', 'string'],
+            'data.*.value' => ['nullable'],
+            'data.*.is_active' => ['boolean'],
+        ];
+    }
+}
